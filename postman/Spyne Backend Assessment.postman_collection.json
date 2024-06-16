@@ -1,0 +1,483 @@
+{
+	"info": {
+		"_postman_id": "619d7a38-1b9a-43d5-b4f7-2e24645caff8",
+		"name": "Spyne Backend Assessment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25658175"
+	},
+	"item": [
+		{
+			"name": "Discussion",
+			"item": [
+				{
+					"name": "Add Discussion",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"Discussion 2\",\r\n    \"image\": \"https://image.link2\",\r\n    \"hash_tags\": [\"first\", \"second\", \"third\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{discussionApiUrl}}/api/v1/discussion",
+							"host": [
+								"{{discussionApiUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"discussion"
+							]
+						},
+						"description": "<h3>Add a book in the library with basic details like book name, release date and author name</h3>\r\n\r\n<b> Status Code (201) </b> :  Book record has been successfully created<br>\r\n<b> Status Code (422) </b> :  Indicates Invalid input parameters <br>\r\n<b> Status Code (500) </b> :  Indicates internal server error<br>"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Discussion",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"Discussion Edted\",\r\n    \"image\": \"https://image.link.edited\",\r\n    \"hash_tags\": [\"first\", \"second\", \"third\"],\r\n    \"views\": 1,\r\n    \"likes\": 1,\r\n    \"comments\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{discussionApiUrl}}/api/v1/discussion/:uuid",
+							"host": [
+								"{{discussionApiUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"discussion",
+								":uuid"
+							],
+							"variable": [
+								{
+									"key": "uuid",
+									"value": "8456e324-82f8-4040-a1e0-67629a717d34"
+								}
+							]
+						},
+						"description": "<h3>Update details of a particular book based on uuid</h3>\r\n\r\n<b> Status Code (200) </b> :  Details of a particular book has been updated successfully <br>\r\n<b> Status Code (404) </b> :  No records found in the system for given uuid <br>\r\n<b> Status Code (500) </b> :  Indicates internal server error<br>"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete A Discussion",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{discussionApiUrl}}/api/v1/discussion/:uuid",
+							"host": [
+								"{{discussionApiUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"discussion",
+								":uuid"
+							],
+							"variable": [
+								{
+									"key": "uuid",
+									"value": "cdecea94-a1ff-43b7-a920-02e3462bf3f2"
+								}
+							]
+						},
+						"description": "<h3>Delete details of a particular book based on uuid</h3>\r\n\r\n<b> Status Code (200) </b> :  Details of a particular book has been deleted successfully <br>\r\n<b> Status Code (404) </b> :  No records found in the system for given uuid <br>\r\n<b> Status Code (500) </b> :  Indicates internal server error<br>"
+					},
+					"response": []
+				},
+				{
+					"name": "Get A Discussion By Tags",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{discussionApiUrl}}/api/v1/discussion/tags?tags=second",
+							"host": [
+								"{{discussionApiUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"discussion",
+								"tags"
+							],
+							"query": [
+								{
+									"key": "tags",
+									"value": "second"
+								}
+							]
+						},
+						"description": "<h3>Fetch book details from the system by id</h3>\r\n\r\n<b> Status Code (200) </b> :  Fetched details of particular book successfully <br>\r\n<b> Status Code (404) </b> :  No records found in the database <br>\r\n<b> Status Code (500) </b> :  Indicates internal server error<br>"
+					},
+					"response": []
+				},
+				{
+					"name": "Get A Discussion By Text",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{discussionApiUrl}}/api/v1/discussion/text?text=Discussion",
+							"host": [
+								"{{discussionApiUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"discussion",
+								"text"
+							],
+							"query": [
+								{
+									"key": "text",
+									"value": "Discussion"
+								}
+							]
+						},
+						"description": "<h3>Fetch book details from the system by id</h3>\r\n\r\n<b> Status Code (200) </b> :  Fetched details of particular book successfully <br>\r\n<b> Status Code (404) </b> :  No records found in the database <br>\r\n<b> Status Code (500) </b> :  Indicates internal server error<br>"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Add User Copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Name 4\",\r\n    \"mobileno\": \"9876543212\",\r\n    \"email\": \"email4@email.com\",\r\n    \"password\": \"mypass\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{userApiUrl}}/api/v1/user",
+							"host": [
+								"{{userApiUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user"
+							]
+						},
+						"description": "<h3>Add a book in the library with basic details like book name, release date and author name</h3>\r\n\r\n<b> Status Code (201) </b> :  Book record has been successfully created<br>\r\n<b> Status Code (422) </b> :  Indicates Invalid input parameters <br>\r\n<b> Status Code (500) </b> :  Indicates internal server error<br>"
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Name 2\",\r\n    \"mobileno\": \"98765432112\",\r\n    \"email\": \"email21@email.com\",\r\n    \"followed\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{userApiUrl}}/api/v1/user/:uuid",
+							"host": [
+								"{{userApiUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								":uuid"
+							],
+							"variable": [
+								{
+									"key": "uuid",
+									"value": "d164328d-36aa-49f6-9fc9-456d93234899"
+								}
+							]
+						},
+						"description": "<h3>Update details of a particular book based on uuid</h3>\r\n\r\n<b> Status Code (200) </b> :  Details of a particular book has been updated successfully <br>\r\n<b> Status Code (404) </b> :  No records found in the system for given uuid <br>\r\n<b> Status Code (500) </b> :  Indicates internal server error<br>"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete A User Copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{userApiUrl}}/api/v1/user/:uuid",
+							"host": [
+								"{{userApiUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								":uuid"
+							],
+							"variable": [
+								{
+									"key": "uuid",
+									"value": "23d2f965-df39-4688-a6e4-bb343813375d"
+								}
+							]
+						},
+						"description": "<h3>Delete details of a particular book based on uuid</h3>\r\n\r\n<b> Status Code (200) </b> :  Details of a particular book has been deleted successfully <br>\r\n<b> Status Code (404) </b> :  No records found in the system for given uuid <br>\r\n<b> Status Code (500) </b> :  Indicates internal server error<br>"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{userApiUrl}}/api/v1/user",
+							"host": [
+								"{{userApiUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user"
+							]
+						},
+						"description": "<h3>Fetch all the book records from the system</h3>\r\n\r\n<b> Status Code (200) </b> :  Fetched all records successfully <br>\r\n<b> Status Code (404) </b> :  No records found in the database <br>\r\n<b> Status Code (500) </b> :  Indicates internal server error<br>"
+					},
+					"response": []
+				},
+				{
+					"name": "Get A User By Id Copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{userApiUrl}}/api/v1/user/:uuid",
+							"host": [
+								"{{userApiUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								":uuid"
+							],
+							"variable": [
+								{
+									"key": "uuid",
+									"value": "c2c9b889-4146-477e-83dc-1b520763a73b"
+								}
+							]
+						},
+						"description": "<h3>Fetch book details from the system by id</h3>\r\n\r\n<b> Status Code (200) </b> :  Fetched details of particular book successfully <br>\r\n<b> Status Code (404) </b> :  No records found in the database <br>\r\n<b> Status Code (500) </b> :  Indicates internal server error<br>"
+					},
+					"response": []
+				},
+				{
+					"name": "Get A User By Name Copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{userApiUrl}}/api/v1/user/name?name=Name 2",
+							"host": [
+								"{{userApiUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"name"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Name 2"
+								}
+							]
+						},
+						"description": "<h3>Fetch book details from the system by id</h3>\r\n\r\n<b> Status Code (200) </b> :  Fetched details of particular book successfully <br>\r\n<b> Status Code (404) </b> :  No records found in the database <br>\r\n<b> Status Code (500) </b> :  Indicates internal server error<br>"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "discussionApiUrl",
+			"value": "http://localhost:8082"
+		},
+		{
+			"key": "userApiUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
